@@ -20,20 +20,19 @@ public class PaymentJDBCDao {
         List<PaymentDTO> userPayments = new ArrayList<>();
         params.put("userId", userId);
 
-        SQL.append("SELECT * FROM reservation\n                                     ");
-        SQL.append("INNER JOIN rooms ON reservation.room_id = rooms.room_id        \n");
-        SQL.append("INNER JOIN hotel_agent ON rooms.hotel_id = hotel_agent.hotel_id\n");
-        SQL.append("WHERE hotel_agent.user_id=:userID");
+        SQL.append("SELECT bill.bill_id, bill.bill_date, payment.payment_date, payment.payment_time, payment.payment_amount  FROM payment\n                                     ");
+        SQL.append("INNER JOIN bill ON payment.bill_id = bill.bill_id        \n");
+        SQL.append("WHERE payment.user_id=:userId");
 
         return namedParameterJdbcTemplate.query(SQL.toString(), params, rs -> {
             while (rs.next()) {
                 PaymentDTO paymentDTO = new PaymentDTO();
 
-                paymentDTO.setBillId(rs.getInt("billId"));
-                paymentDTO.setPaymentDate(rs.getDate("paymentDate"));
-                paymentDTO.setPaymentTime(rs.getTime("paymentTime"));
-                paymentDTO.setPaymentAmount(rs.getInt("paymentAmount"));
-                paymentDTO.setBillDate(rs.getDate("billDate"));
+                paymentDTO.setBillId(rs.getInt("bill_id"));
+                paymentDTO.setPaymentDate(rs.getDate("payment_date"));
+                paymentDTO.setPaymentTime(rs.getTime("payment_time"));
+                paymentDTO.setPaymentAmount(rs.getInt("payment_amount"));
+                paymentDTO.setBillDate(rs.getDate("bill_date"));
 
 
 
