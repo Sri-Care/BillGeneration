@@ -22,7 +22,6 @@ public class UserService {
     @Id
     @GeneratedValue
     private Integer id;
-    private Integer userId;
     private LocalDate subscribedDate;
     private LocalDate cancellationDate;
     private SubscriptionStatus subscriptionStatus;
@@ -30,6 +29,10 @@ public class UserService {
     @ManyToOne
     @JoinColumn(name = "serviceId", referencedColumnName = "serviceId" )
     private Service service;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId" )
+    private UserInfo user;
 
 }
 
