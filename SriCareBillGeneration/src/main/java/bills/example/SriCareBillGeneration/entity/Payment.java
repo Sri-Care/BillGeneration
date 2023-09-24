@@ -29,6 +29,13 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId" )
-    private UserInfo user;
+    private UserInfo userInfo;
+
+    @PrePersist
+    protected void onCreate() {
+        paymentDate = LocalDate.now();
+        paymentTime = LocalTime.now();
+    }
+
 
 }

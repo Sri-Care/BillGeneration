@@ -26,6 +26,8 @@ public class Bill {
 
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "userId" )
-    private UserInfo user;
+    private UserInfo userInfo;
+
+
 
 }
