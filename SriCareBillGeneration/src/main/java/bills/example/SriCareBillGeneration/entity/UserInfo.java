@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name = "userInfo")
 public class UserInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer userId;
     private String name;
     private String email;
