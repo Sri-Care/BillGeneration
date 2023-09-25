@@ -24,6 +24,10 @@ public class UserService {
     private Integer id;
     private LocalDate subscribedDate;
     private LocalDate cancellationDate;
+
+
+//    @Column(columnDefinition = "varchar(255) default InActive'")
+    @Enumerated(EnumType.STRING)
     private SubscriptionStatus subscriptionStatus;
 
     @ManyToOne

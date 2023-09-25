@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +19,8 @@ public class ServiceJDBCDao {
         StringBuffer SQL = new StringBuffer();
         HashMap<String, Object> params = new HashMap<>();
         List<ServiceDTO> services = new ArrayList<>();
-
-
+//        LocalDate earliestMonth = LocalDate.now().minusMonths(1).withDayOfMonth(26); // Calculate the first day of the relevant month
+//        LocalDate latestMonth = LocalDate.now().withDayOfMonth(25);
         SQL.append("select * from service");
 //        params.put("serviceId", serviceId);
 

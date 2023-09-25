@@ -14,19 +14,4 @@ public class SriCareBillGenerationApplication {
 		SpringApplication.run(SriCareBillGenerationApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer CorsConfig() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings( @NonNull CorsRegistry registry ) {
-				registry.addMapping("/**")
-						.allowedOrigins("http://127.0.0.1:5173")
-						.allowedHeaders("*")
-						.allowedMethods("*")
-						.allowCredentials(true);
-			}
-		};
-	}
-
-
 }
